@@ -2,13 +2,12 @@ const SelectedCard = ({
   selectedPlayerCard,
   setSelectedCard,
   setTotalCoin,
-
 }) => {
-   const {name,id, price} = selectedPlayerCard;
-   function removePlayer(){
-    setSelectedCard((prev)=> prev.filter(payler => payler.id !== id))
-    setTotalCoin(prev => prev + price);
-   }
+  const { name, id, price } = selectedPlayerCard;
+  function removePlayer() {
+    setSelectedCard((prev) => prev.filter((payler) => payler.id !== id));
+    setTotalCoin((prev) => prev + price);
+  }
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <div className="card-body">
