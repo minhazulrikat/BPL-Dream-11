@@ -1,6 +1,6 @@
 import { FaUser, FaFlag } from "react-icons/fa";
 
-const Card = ({ player, setSelectedCard, selectedCard }) => {
+const Card = ({ player, setSelectedCard, selectedCard, setTotalCoin, totalCoin }) => {
   const {
     name,
     nationality,
@@ -17,8 +17,12 @@ const Card = ({ player, setSelectedCard, selectedCard }) => {
   function handleSelection(player) {
     if (isSelected) {
       return;
+    }else if(totalCoin<price){
+      alert('not enough coin');
+      return;
     }
     setSelectedCard([...selectedCard, player]);
+    setTotalCoin(prev=> prev - price)
   }
 
   return (

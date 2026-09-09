@@ -1,7 +1,7 @@
 import { use } from "react";
 import Card from "../../../components/ui/Card";
 
-const AvailablePlayers = ({ playersData, setSelectedCard, selectedCard, isSelected,setIsSelected}) => {
+const AvailablePlayers = ({ playersData, setSelectedCard, selectedCard, isSelected,setIsSelected, totalCoin, setTotalCoin}) => {
   const players = use(playersData);
 
   return (
@@ -15,6 +15,8 @@ const AvailablePlayers = ({ playersData, setSelectedCard, selectedCard, isSelect
             setSelectedCard={setSelectedCard}
             setIsSelected={setIsSelected}
             isSelected={isSelected}
+            setTotalCoin={setTotalCoin}
+            totalCoin={totalCoin}
           ></Card>
         );
       })}

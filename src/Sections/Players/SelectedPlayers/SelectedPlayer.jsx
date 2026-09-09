@@ -1,16 +1,23 @@
 import SelectedCard from "../../../components/ui/SelectedCard";
 
-const SelectedPlayer = ({ setSelectedCard, selectedCard }) => {
+const SelectedPlayer = ({
+  setSelectedCard,
+  selectedCard,
+  setTotalCoin,
+  totalCoin,
+}) => {
   return (
     <>
       <div className="flex flex-col gap-4">
-        {selectedCard.map((selectedCard)=>{
-            return(
-                <SelectedCard
-          selectedCard={selectedCard}
-          setSelectedCard={setSelectedCard}
-        ></SelectedCard>
-            )
+        {selectedCard.map((selectedPlayerCard) => {
+          return (
+            <SelectedCard
+              selectedPlayerCard={selectedPlayerCard}
+              setSelectedCard={setSelectedCard}
+              totalCoin={totalCoin}
+              setTotalCoin={setTotalCoin}
+            ></SelectedCard>
+          );
         })}
       </div>
     </>

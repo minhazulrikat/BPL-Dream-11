@@ -4,10 +4,9 @@ import SelectedPlayer from "./SelectedPlayers/SelectedPlayer";
 
 const playersData = fetch("/players.json").then((res) => res.json());
 
-const Players = () => {
+const Players = ({ setTotalCoin, totalCoin }) => {
   const [seletedTab, setSelectedTab] = useState(false);
   const [selectedCard, setSelectedCard] = useState([]);
-
 
   function selectHandler(btnName) {
     if (btnName === "available") {
@@ -49,13 +48,16 @@ const Players = () => {
               <SelectedPlayer
                 selectedCard={selectedCard}
                 setSelectedCard={setSelectedCard}
+                setTotalCoin={setTotalCoin}
+                totalCoin={totalCoin}
               ></SelectedPlayer>
             ) : (
               <AvailablePlayers
                 playersData={playersData}
                 selectedCard={selectedCard}
                 setSelectedCard={setSelectedCard}
-               
+                setTotalCoin={setTotalCoin}
+                totalCoin={totalCoin}
               ></AvailablePlayers>
             )}
           </Suspense>
