@@ -1,10 +1,12 @@
 import { Suspense, useState } from "react";
-import AvailablePlayers from "./Available Players/AvailablePlayers";
+import AvailablePlayers from "./AvailablePlayers/AvailablePlayers";
+import SelectedPlayer from "./SelectedPlayers/SelectedPlayer";
 
 const playersData = fetch("/players.json").then((res) => res.json());
 
 const Players = () => {
   const [isSelected, setIsSelected] = useState(false);
+  const [selectedCard, setSelectedCard] = useState([]);
   function selectHandler(btnName) {
     if (btnName === "available") {
       setIsSelected(false);
@@ -30,16 +32,33 @@ const Players = () => {
               onClick={() => selectHandler("selected")}
               className={`btn rounded-l-none rounded-r-xl border-l-0 ${isSelected ? " bg-[#E7FE29] font-bold " : ""}`}
             >
-              Selected (0)
+              Selected ({selectedCard.length})
             </button>
           </div>
         </div>
         {/* Header wrap end here  */}
 
         {/* player cards wrapper strat here  */}
-        <Suspense fallback={<span className="loading loading-dots loading-xl"></span>}>
-          <AvailablePlayers playersData={playersData}></AvailablePlayers>
-        </Suspense>
+        <div className="min-h-screen">
+          <Suspense
+            fallback={<span className="loading loading-dots loading-xl"></span>}
+          >
+            {isSelected ? (
+              <SelectedPlayer
+                selectedCard={selectedCard}
+                setSelectedCard={setSelectedCard}
+              ></SelectedPlayer>
+            ) : (
+              <AvailablePlayers
+                playersData={playersData}
+                selectedCard={selectedCard}
+                setSelectedCard={setSelectedCard}
+                setIsSelected={setIsSelected}
+                isSelected={isSelected}
+              ></AvailablePlayers>
+            )}
+          </Suspense>
+        </div>
 
         {/* player cards wrapper end here  */}
 
