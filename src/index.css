@@ -2,7 +2,9 @@
 /* sora font import  */
 
 @import "tailwindcss";
+
 @plugin "daisyui";
+
 
 body{
      font-family: "Sora", sans-serif;

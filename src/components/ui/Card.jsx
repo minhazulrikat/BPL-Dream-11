@@ -1,6 +1,6 @@
 import { FaUser, FaFlag } from "react-icons/fa";
 
-const Card = ({ player, setSelectedCard, selectedCard , isSelected ,setIsSelected }) => {
+const Card = ({ player, setSelectedCard, selectedCard }) => {
   const {
     name,
     nationality,
@@ -11,24 +11,28 @@ const Card = ({ player, setSelectedCard, selectedCard , isSelected ,setIsSelecte
     rating,
     imageUrl,
   } = player;
-
+  const isSelected = selectedCard.some(
+    (selectedPlayer) => selectedPlayer.id === player.id,
+  );
   function handleSelection(player) {
-    if(isSelected){
-        return;
+    if (isSelected) {
+      return;
     }
     setSelectedCard([...selectedCard, player]);
-    setIsSelected(true);
   }
 
   return (
     <div className="card bg-base-100 shadow border border-base-300">
-      <figure className="m-4 rounded-lg border border-base-300">
-        <img className="object-contain" src={imageUrl} alt="player image" />
+      <figure className="m-4 rounded-lg border border-base-300 h-[442px] md:h-[380px] lg:h-[336px]">
+        <img
+          className="object-cover w-full h-full object-top "
+          src={imageUrl}
+          alt="player image"
+        />
       </figure>
       <div className="card-body">
         <div className="upperbody">
           <h2 className="card-title mb-4">
-            {" "}
             <FaUser /> {name}
           </h2>
 
@@ -54,8 +58,10 @@ const Card = ({ player, setSelectedCard, selectedCard , isSelected ,setIsSelecte
             <button
               onClick={() => handleSelection(player)}
               className="btn font-normal"
+              disabled={isSelected}
             >
-              Choose Player
+              {" "}
+              {isSelected ? "Selected" : "Choose Player"}
             </button>
           </div>
         </div>
