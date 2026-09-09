@@ -1,12 +1,20 @@
+import { use } from "react";
 import Card from "../../../components/ui/Card";
 
+const AvailablePlayers = ({ playersData }) => {
+    const players = use(playersData);
 
-const AvailablePlayers = () => {
-    return (
-        <div>
-            <Card></Card>
-        </div>
-    );
+    
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+            players.map((player)=>{
+
+                return <Card key={player.id}></Card>
+            })
+        }
+    </div>
+  );
 };
 
 export default AvailablePlayers;

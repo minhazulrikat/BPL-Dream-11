@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import AvailablePlayers from "./Available Players/AvailablePlayers";
 
-const playersData = fetch('/public/players.json')
+const playersData = fetch("/players.json").then((res) => res.json());
 
 const Players = () => {
-
   const [isSelected, setIsSelected] = useState(false);
   function selectHandler(btnName) {
     if (btnName === "available") {
@@ -14,10 +13,9 @@ const Players = () => {
     }
   }
   return (
-    <section >
+    <section>
       {/* main container */}
       <div className="container mx-auto">
-
         {/* header wraper */}
         <div className="flex justify-between items-center mt-16 lg:mt-22 mb-8">
           <h2 className="text-2xl font-bold">Available Players</h2>
@@ -39,9 +37,9 @@ const Players = () => {
         {/* Header wrap end here  */}
 
         {/* player cards wrapper strat here  */}
-        <div>
-            <AvailablePlayers></AvailablePlayers>
-        </div>
+        <Suspense fallback={<span className="loading loading-dots loading-xl"></span>}>
+          <AvailablePlayers playersData={playersData}></AvailablePlayers>
+        </Suspense>
 
         {/* player cards wrapper end here  */}
 
