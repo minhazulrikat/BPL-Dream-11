@@ -5,8 +5,8 @@ import Navbar from "./Sections/Navbar/Navbar";
 import Players from "./Sections/Players/Players";
 
 function App() {
-  const [totalCoin, setTotalCoin] = useState(50000);
-// checking  
+  const [totalCoin, setTotalCoin] = useState(5000);
+  // checking
   return (
     <>
       <Navbar totalCoin={totalCoin}></Navbar>
