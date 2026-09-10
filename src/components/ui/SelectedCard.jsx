@@ -1,36 +1,32 @@
+import { MdDelete } from "react-icons/md";
+
 const SelectedCard = ({
   selectedPlayerCard,
   setSelectedCard,
   setTotalCoin,
 }) => {
-  const { name, id, price } = selectedPlayerCard;
+  const { name, id, price , imageUrl, playerType} = selectedPlayerCard;
   function removePlayer() {
     setSelectedCard((prev) => prev.filter((payler) => payler.id !== id));
     setTotalCoin((prev) => prev + price);
   }
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
-      <div className="card-body">
+    <div className="card bg-base-100 shadow-sm border border-base-300">
+      <div className="card-body justify-between flex-row items-center">
+      <div className="justify-start items-center flex gap-4 ">
+        <img className="h-20 w-auto object-contain overflow-hidden rounded-lg" src={imageUrl} alt="" />
+    <div className="flex flex-col gap-3">
+      <h2 className="text-xl font-semibold">{name}</h2>
+      <p className="text-base-content/70">{playerType}</p>
+    </div>
+      </div>
+
         <div className="card-actions justify-end">
           <button onClick={removePlayer} className="btn btn-square btn-sm">
-            <svg
-              aria-label="Close"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <MdDelete className="text-3xl" />
           </button>
         </div>
-        <p>{name}</p>
+        
       </div>
     </div>
   );

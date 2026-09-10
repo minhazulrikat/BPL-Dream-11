@@ -40,27 +40,31 @@ const Players = ({ setTotalCoin, totalCoin }) => {
         {/* Header wrap end here  */}
 
         {/* player cards wrapper strat here  */}
-        <div className="min-h-screen">
-          <Suspense
-            fallback={<span className="loading loading-dots loading-xl"></span>}
-          >
-            {seletedTab ? (
-              <SelectedPlayer
-                selectedCard={selectedCard}
-                setSelectedCard={setSelectedCard}
-                setTotalCoin={setTotalCoin}
-                totalCoin={totalCoin}
-              ></SelectedPlayer>
-            ) : (
-              <AvailablePlayers
-                playersData={playersData}
-                selectedCard={selectedCard}
-                setSelectedCard={setSelectedCard}
-                setTotalCoin={setTotalCoin}
-                totalCoin={totalCoin}
-              ></AvailablePlayers>
-            )}
-          </Suspense>
+        <div className="w-full mb-20 flex flex-col justify-center items-center">
+          <div className="w-full">
+            <Suspense
+              fallback={
+                <span className="loading loading-dots loading-xl mx-auto"></span>
+              }
+            >
+              {seletedTab ? (
+                <SelectedPlayer
+                  selectedCard={selectedCard}
+                  setSelectedCard={setSelectedCard}
+                  setTotalCoin={setTotalCoin}
+                  totalCoin={totalCoin}
+                ></SelectedPlayer>
+              ) : (
+                <AvailablePlayers
+                  playersData={playersData}
+                  selectedCard={selectedCard}
+                  setSelectedCard={setSelectedCard}
+                  setTotalCoin={setTotalCoin}
+                  totalCoin={totalCoin}
+                ></AvailablePlayers>
+              )}
+            </Suspense>
+          </div>
         </div>
 
         {/* player cards wrapper end here  */}

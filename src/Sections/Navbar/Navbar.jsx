@@ -2,6 +2,7 @@ import dollerImage from "../../assets/DoubleDollar.png";
 import logo from "../../assets/logo.png";
 
 const Navbar = ({ totalCoin }) => {
+  console.log(totalCoin)
   return (
     <div className="bg-base-100 shadow-sm ">
       <div className="container mx-auto navbar py-4">
@@ -51,13 +52,15 @@ const Navbar = ({ totalCoin }) => {
             </li>
           </ul>
           <a className="cursor-default flex gap-2">
-            0 Coin <img src={dollerImage} alt="" />{" "}
+            {totalCoin} Coin <img src={dollerImage} alt="" />{" "}
           </a>
         </div>
         <div className="navbar-end lg:hidden flex">
           <a className="cursor-default flex gap-2">
             {totalCoin} Coin <img src={dollerImage} alt="" />{" "}
+           
           </a>
+           <p>{totalCoin}</p>
         </div>
       </div>
     </div>
