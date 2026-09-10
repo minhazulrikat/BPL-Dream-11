@@ -1,3 +1,4 @@
+import { FaUser } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const SelectedCard = ({
@@ -14,9 +15,12 @@ const SelectedCard = ({
     <div className="card bg-base-100 shadow-sm border border-base-300">
       <div className="card-body justify-between flex-row items-center">
       <div className="justify-start items-center flex gap-4 ">
-        <img className="h-20 w-auto object-cover overflow-hidden rounded-lg" src={imageUrl} alt="" />
+        <img className="h-20 w-20 object-cover object-top overflow-hidden rounded-lg" src={imageUrl} alt="" />
     <div className="flex flex-col gap-3">
+      <div className="flex gap-2 items-center">
+        <FaUser className="text-xl"/>
       <h2 className="text-xl font-semibold">{name}</h2>
+      </div>
       <p className="text-base-content/70">{playerType}</p>
     </div>
       </div>

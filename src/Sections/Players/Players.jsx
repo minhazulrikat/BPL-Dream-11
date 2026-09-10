@@ -5,7 +5,7 @@ import SelectedPlayer from "./SelectedPlayers/SelectedPlayer";
 const playersData = fetch("/players.json").then((res) => res.json());
 
 const Players = ({ setTotalCoin, totalCoin }) => {
-  const [seletedTab, setSelectedTab] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(false);
   const [selectedCard, setSelectedCard] = useState([]);
 
   function selectHandler(btnName) {
@@ -25,13 +25,13 @@ const Players = ({ setTotalCoin, totalCoin }) => {
           <div className="flex">
             <button
               onClick={() => selectHandler("available")}
-              className={`btn rounded-r-none rounded-l-xl border-r-0 ${seletedTab ? "" : " bg-[#E7FE29] font-bold "}`}
+              className={`btn rounded-r-none rounded-l-xl border-r-0 ${selectedTab ? "" : " bg-[#E7FE29] font-bold "}`}
             >
               Available
             </button>
             <button
               onClick={() => selectHandler("selected")}
-              className={`btn rounded-l-none rounded-r-xl border-l-0 ${seletedTab ? " bg-[#E7FE29] font-bold " : ""}`}
+              className={`btn rounded-l-none rounded-r-xl border-l-0 ${selectedTab ? " bg-[#E7FE29] font-bold " : ""}`}
             >
               Selected ({selectedCard.length})
             </button>
@@ -47,7 +47,7 @@ const Players = ({ setTotalCoin, totalCoin }) => {
                 <span className="loading loading-dots loading-xl mx-auto"></span>
               }
             >
-              {seletedTab ? (
+              {selectedTab ? (
                 <SelectedPlayer
                   selectedCard={selectedCard}
                   setSelectedCard={setSelectedCard}
@@ -64,6 +64,16 @@ const Players = ({ setTotalCoin, totalCoin }) => {
                 ></AvailablePlayers>
               )}
             </Suspense>
+          </div>
+          <div
+            className={` justify-start items-center w-full mt-16 ${selectedTab ? " flex " : " hidden"}`}
+          >
+            <button
+              onClick={() => selectHandler("available")}
+              className="btn bg-[#E7FE29]"
+            >
+              Add More Player
+            </button>
           </div>
         </div>
 
