@@ -1,8 +1,9 @@
 import { use } from "react";
 import Card from "../../../components/ui/Card";
 
-const AvailablePlayers = ({ playersData, setSelectedCard, selectedCard, isSelected,setIsSelected, totalCoin, setTotalCoin}) => {
+const AvailablePlayers = ({ playersData, setSelectedCard, selectedCard, isSelected,setIsSelected, totalCoin, setTotalCoin, setTotalPlayers}) => {
   const players = use(playersData);
+setTotalPlayers (players.length);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

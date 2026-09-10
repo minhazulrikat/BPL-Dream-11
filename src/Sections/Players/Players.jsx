@@ -7,6 +7,7 @@ const playersData = fetch("/players.json").then((res) => res.json());
 const Players = ({ setTotalCoin, totalCoin }) => {
   const [selectedTab, setSelectedTab] = useState(false);
   const [selectedCard, setSelectedCard] = useState([]);
+  const [totalPlayers, setTotalPlayers] = useState(0);
 
   function selectHandler(btnName) {
     if (btnName === "available") {
@@ -21,7 +22,11 @@ const Players = ({ setTotalCoin, totalCoin }) => {
       <div className="container mx-auto">
         {/* header wraper */}
         <div className="flex justify-between items-center mt-16 lg:mt-22 mb-8">
-          <h2 className="text-2xl font-bold">Available Players</h2>
+          <h2 className="text-2xl font-bold">
+            {selectedTab
+              ? ` Selected Players ${selectedCard.length}/${totalPlayers} `
+              : " Available Players"}
+          </h2>
           <div className="flex">
             <button
               onClick={() => selectHandler("available")}
@@ -61,12 +66,13 @@ const Players = ({ setTotalCoin, totalCoin }) => {
                   setSelectedCard={setSelectedCard}
                   setTotalCoin={setTotalCoin}
                   totalCoin={totalCoin}
+                  setTotalPlayers={setTotalPlayers}
                 ></AvailablePlayers>
               )}
             </Suspense>
           </div>
           <div
-            className={` justify-start items-center w-full mt-16 ${selectedTab ? " flex " : " hidden"}`}
+            className={` justify-start items-center w-full mt-12 ${selectedTab ? " flex " : " hidden"}`}
           >
             <button
               onClick={() => selectHandler("available")}
