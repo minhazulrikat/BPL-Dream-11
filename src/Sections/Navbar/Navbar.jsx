@@ -2,7 +2,7 @@ import dollerImage from "../../assets/DoubleDollar.png";
 import logo from "../../assets/logo.png";
 
 const Navbar = ({ totalCoin }) => {
-  console.log(totalCoin)
+ 
   return (
     <div className="bg-base-100 shadow-sm ">
       <div className="container mx-auto navbar py-4">
